@@ -7,10 +7,8 @@ import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import ParticlesBackground from '../components/ParticlesBackground';
-
-// Import required packages
-<lov-add-dependency>framer-motion@latest</lov-add-dependency>
-<lov-add-dependency>react-scroll@latest</lov-add-dependency>
+import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
 
 const Index = () => {
   useEffect(() => {
