@@ -34,7 +34,7 @@ const NavBar: React.FC = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrollPosition > 50 ? 'bg-cyber-darker/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="text-cyber-blue text-2xl font-bold neon-text">
-          <span className="text-cyber-pink">Cyber</span>Portfolio
+          <span className="text-cyber-pink">Vanshika</span> Nimwal
         </div>
         
         <div className="hidden md:flex space-x-8">

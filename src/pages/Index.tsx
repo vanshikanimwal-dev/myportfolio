@@ -13,7 +13,7 @@ import { Link } from 'react-scroll';
 const Index = () => {
   useEffect(() => {
     // Setting up the title
-    document.title = "CyberPortfolio | Your Name";
+    document.title = "CyberPortfolio | Vanshika Nimwal";
     
     // Smooth scrolling setup for the whole page
     const html = document.querySelector('html');

@@ -1,13 +1,22 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-scroll';
 import { ArrowDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const HeroSection: React.FC = () => {
   const particleRef = useRef<HTMLDivElement>(null);
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  
+  const roles = [
+    "Java Developer",
+    "Web Developer",
+    "Game Developer",
+    "Frontend Developer"
+  ];
 
   useEffect(() => {
-    // Parallax effect
+    // Parallax effect for particles
     const handleMouseMove = (e: MouseEvent) => {
       if (!particleRef.current) return;
       
@@ -24,10 +33,16 @@ const HeroSection: React.FC = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     
+    // Role switcher
+    const intervalId = setInterval(() => {
+      setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+    }, 3000);
+    
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      clearInterval(intervalId);
     };
-  }, []);
+  }, [roles.length]);
 
   return (
     <section 
@@ -63,15 +78,22 @@ const HeroSection: React.FC = () => {
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8">
           <div className="inline-block">
             <span className="text-white">I'm </span>
-            <span className="text-cyber-pink animate-pulse-glow">Your Name</span>
+            <span className="text-cyber-pink animate-pulse-glow">Vanshika Nimwal</span>
           </div>
         </h1>
         
         <div className="mx-auto max-w-2xl mb-8">
-          <div className="mb-4 h-10">
-            <div className="typewriter animate-typewriter font-mono text-xl md:text-2xl text-cyber-blue inline-block">
-              FullStack Developer &amp; UI/UX Designer
-            </div>
+          <div className="mb-4 h-10 overflow-hidden">
+            <motion.div
+              key={currentRoleIndex}
+              initial={{ y: 40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -40, opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="font-mono text-xl md:text-2xl text-cyber-blue"
+            >
+              {roles[currentRoleIndex]}
+            </motion.div>
           </div>
           <p className="text-gray-400 mb-8">
             Crafting the future with code, one pixel at a time.
