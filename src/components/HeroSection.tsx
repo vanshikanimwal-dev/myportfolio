@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-scroll';
 import { ArrowDown } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const HeroSection: React.FC = () => {
   const particleRef = useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ const HeroSection: React.FC = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     
-    // Role switcher
+    // Role switcher with clear interval
     const intervalId = setInterval(() => {
       setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
     }, 3000);
@@ -83,17 +83,19 @@ const HeroSection: React.FC = () => {
         </h1>
         
         <div className="mx-auto max-w-2xl mb-8">
-          <div className="mb-4 h-10 overflow-hidden">
-            <motion.div
-              key={currentRoleIndex}
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="font-mono text-xl md:text-2xl text-cyber-blue"
-            >
-              {roles[currentRoleIndex]}
-            </motion.div>
+          <div className="mb-4 h-10 overflow-hidden relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentRoleIndex}
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="font-mono text-xl md:text-2xl text-cyber-blue absolute left-0 right-0"
+              >
+                {roles[currentRoleIndex]}
+              </motion.div>
+            </AnimatePresence>
           </div>
           <p className="text-gray-400 mb-8">
             Crafting the future with code, one pixel at a time.
