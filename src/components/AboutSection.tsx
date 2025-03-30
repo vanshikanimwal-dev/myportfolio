@@ -1,24 +1,51 @@
 
 import React, { useState } from 'react';
 import { Code, Monitor, Server, Smartphone, Hexagon, Database } from 'lucide-react';
+import { Badge } from './ui/badge';
+
+// Tech logos/icons with custom colors
+const TechLogo: React.FC<{ name: string; icon: React.ReactNode; color: string }> = ({ 
+  name, 
+  icon, 
+  color 
+}) => (
+  <div className="flex flex-col items-center justify-center group p-2 transition-all duration-300 hover:scale-110">
+    <div className={`mb-2 p-3 rounded-lg bg-cyber-darker/50 text-${color} transition-all duration-300 group-hover:shadow-lg group-hover:shadow-${color}/20`}>
+      {icon}
+    </div>
+    <span className="text-xs text-gray-400 group-hover:text-white transition-all duration-300">{name}</span>
+  </div>
+);
 
 const AboutSection: React.FC = () => {
   const [activeSkill, setActiveSkill] = useState('');
   
   const skills = [
     { id: 'frontend', name: 'Frontend', icon: <Monitor size={24} />, color: 'cyber-blue', 
-      technologies: ['React', 'TypeScript', 'Next.js', 'TailwindCSS', 'GSAP', 'Framer Motion'] },
+      technologies: ['React', 'CSS', 'HTML'] },
     { id: 'backend', name: 'Backend', icon: <Server size={24} />, color: 'cyber-pink', 
-      technologies: ['Node.js', 'Express', 'Python', 'Java', 'GraphQL', 'REST APIs'] },
-    { id: 'mobile', name: 'Mobile Dev', icon: <Smartphone size={24} />, color: 'cyber-green', 
-      technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'Redux'] },
-    { id: 'database', name: 'Database', icon: <Database size={24} />, color: 'cyber-yellow', 
-      technologies: ['MongoDB', 'PostgreSQL', 'Firebase', 'Redis', 'Supabase', 'MySQL'] },
+      technologies: ['Java', 'Python', 'MySQL'] },
+    { id: 'gamedev', name: 'Game Dev', icon: <Smartphone size={24} />, color: 'cyber-green', 
+      technologies: ['C#', 'Unity', 'Blender'] },
     { id: 'devops', name: 'DevOps', icon: <Hexagon size={24} />, color: 'cyber-purple', 
-      technologies: ['Docker', 'AWS', 'CI/CD', 'Kubernetes', 'Terraform', 'Linux'] },
-    { id: 'other', name: 'Other Skills', icon: <Code size={24} />, color: 'white', 
-      technologies: ['Git', 'GitHub', 'VS Code', 'Figma', 'Adobe XD', 'Photoshop'] },
+      technologies: ['AWS', 'Git', 'GitHub'] },
   ];
+
+  // Tech logos mapping
+  const techLogos = {
+    'React': { icon: <Code size={24} />, color: 'cyber-blue' },
+    'CSS': { icon: <Code size={24} />, color: 'cyber-blue' },
+    'HTML': { icon: <Code size={24} />, color: 'cyber-pink' },
+    'Java': { icon: <Code size={24} />, color: 'cyber-orange' },
+    'Python': { icon: <Code size={24} />, color: 'cyber-yellow' },
+    'MySQL': { icon: <Database size={24} />, color: 'cyber-blue' },
+    'C#': { icon: <Code size={24} />, color: 'cyber-green' },
+    'Unity': { icon: <Code size={24} />, color: 'cyber-gray' },
+    'Blender': { icon: <Code size={24} />, color: 'cyber-orange' },
+    'AWS': { icon: <Server size={24} />, color: 'cyber-orange' },
+    'Git': { icon: <Code size={24} />, color: 'cyber-orange' },
+    'GitHub': { icon: <Code size={24} />, color: 'cyber-purple' },
+  };
 
   return (
     <section id="about" className="py-20 relative overflow-hidden bg-cyber-dark">
@@ -42,7 +69,7 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {skills.map((skill) => (
             <div 
               key={skill.id}
@@ -54,23 +81,29 @@ const AboutSection: React.FC = () => {
                 <div className="mr-3">{skill.icon}</div>
                 <h3 className="text-xl font-semibold">{skill.name}</h3>
               </div>
-              <div className="h-[120px]">
-                <ul className="text-gray-400 space-y-1">
-                  {skill.technologies.map((tech, i) => (
-                    <li 
-                      key={i} 
-                      className={`transition-all duration-300 transform ${
-                        activeSkill === skill.id ? 'translate-x-2 text-white' : ''
-                      }`}
-                      style={{ transitionDelay: `${i * 50}ms` }}
-                    >
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
+              
+              <div className="flex flex-wrap gap-3 justify-center">
+                {skill.technologies.map((tech, i) => (
+                  <TechLogo 
+                    key={i} 
+                    name={tech} 
+                    icon={techLogos[tech].icon} 
+                    color={techLogos[tech].color} 
+                  />
+                ))}
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* Tech Stack Section */}
+        <div className="glass-card p-8 mb-16 border border-cyber-blue/30">
+          <h3 className="text-2xl font-bold mb-6 text-center text-cyber-blue">My Tech Stack</h3>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 justify-items-center">
+            {Object.entries(techLogos).map(([name, {icon, color}]) => (
+              <TechLogo key={name} name={name} icon={icon} color={color} />
+            ))}
+          </div>
         </div>
         
         <div className="mt-16 max-w-4xl mx-auto">
