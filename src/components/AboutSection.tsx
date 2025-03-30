@@ -33,12 +33,11 @@ const AboutSection: React.FC = () => {
           </h2>
           <div className="max-w-3xl mx-auto mt-8">
             <p className="text-gray-400 mb-6">
-              I'm a passionate developer focused on creating modern, interactive web experiences. 
-              With expertise in both frontend and backend technologies, I build scalable, user-friendly applications.
+              Hey there! I'm a Java Developer and Game Developer with a passion for building dynamic and interactive applications. I specialize in Java-based web development and game design, always striving to create seamless and engaging user experiences.
             </p>
             <p className="text-gray-400">
-              When I'm not coding, you can find me exploring new technologies, contributing to open-source,
-              or playing with the latest design tools to create immersive digital experiences.
+              With a strong foundation in Java, front-end and back-end development, and game mechanics, I love bringing ideas to life—whether it's crafting web applications or designing immersive gameplay.
+              When I'm not coding, I enjoy learning new technologies, experimenting with creative design, and pushing the boundaries of what's possible in development. Let's connect and build something awesome!
             </p>
           </div>
         </div>
