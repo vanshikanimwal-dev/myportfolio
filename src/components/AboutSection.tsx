@@ -1,6 +1,19 @@
 
 import React, { useState } from 'react';
-import { Code, Monitor, Server, Smartphone, Hexagon, Database } from 'lucide-react';
+import { 
+  Code, 
+  Monitor, 
+  Server, 
+  Smartphone, 
+  Hexagon, 
+  Database, 
+  Braces, 
+  FileCode, 
+  Cube, 
+  Cloud, 
+  GitBranch, 
+  Github
+} from 'lucide-react';
 import { Badge } from './ui/badge';
 
 // Tech logos/icons with custom colors
@@ -21,30 +34,70 @@ const AboutSection: React.FC = () => {
   const [activeSkill, setActiveSkill] = useState('');
   
   const skills = [
-    { id: 'frontend', name: 'Frontend', icon: <Monitor size={24} />, color: 'cyber-blue', 
-      technologies: ['React', 'CSS', 'HTML'] },
-    { id: 'backend', name: 'Backend', icon: <Server size={24} />, color: 'cyber-pink', 
-      technologies: ['Java', 'Python', 'MySQL'] },
-    { id: 'gamedev', name: 'Game Dev', icon: <Smartphone size={24} />, color: 'cyber-green', 
-      technologies: ['C#', 'Unity', 'Blender'] },
-    { id: 'devops', name: 'DevOps', icon: <Hexagon size={24} />, color: 'cyber-purple', 
-      technologies: ['AWS', 'Git', 'GitHub'] },
+    { 
+      id: 'frontend', 
+      name: 'Frontend', 
+      icon: <Monitor size={24} />, 
+      color: 'cyber-blue', 
+      technologies: ['React', 'HTML', 'CSS', 'JavaScript'] 
+    },
+    { 
+      id: 'backend', 
+      name: 'Backend', 
+      icon: <Server size={24} />, 
+      color: 'cyber-pink', 
+      technologies: ['Java', 'Python', 'Node.js'] 
+    },
+    { 
+      id: 'database', 
+      name: 'Database', 
+      icon: <Database size={24} />, 
+      color: 'cyber-green', 
+      technologies: ['MySQL', 'MongoDB', 'PostgreSQL'] 
+    },
+    { 
+      id: 'gamedev', 
+      name: 'Game Dev', 
+      icon: <Smartphone size={24} />, 
+      color: 'cyber-purple', 
+      technologies: ['C#', 'Unity', 'Blender'] 
+    },
+    { 
+      id: 'devops', 
+      name: 'DevOps', 
+      icon: <Hexagon size={24} />, 
+      color: 'cyber-orange', 
+      technologies: ['AWS', 'Git', 'GitHub'] 
+    },
   ];
 
-  // Tech logos mapping
+  // Tech logos mapping with more accurate branding colors
   const techLogos = {
-    'React': { icon: <Code size={24} />, color: 'cyber-blue' },
-    'CSS': { icon: <Code size={24} />, color: 'cyber-blue' },
-    'HTML': { icon: <Code size={24} />, color: 'cyber-pink' },
-    'Java': { icon: <Code size={24} />, color: 'cyber-orange' },
-    'Python': { icon: <Code size={24} />, color: 'cyber-yellow' },
-    'MySQL': { icon: <Database size={24} />, color: 'cyber-blue' },
-    'C#': { icon: <Code size={24} />, color: 'cyber-green' },
-    'Unity': { icon: <Code size={24} />, color: 'cyber-gray' },
-    'Blender': { icon: <Code size={24} />, color: 'cyber-orange' },
-    'AWS': { icon: <Server size={24} />, color: 'cyber-orange' },
-    'Git': { icon: <Code size={24} />, color: 'cyber-orange' },
-    'GitHub': { icon: <Code size={24} />, color: 'cyber-purple' },
+    // Frontend
+    'React': { icon: <Cube size={24} />, color: 'sky-400' },
+    'HTML': { icon: <FileCode size={24} />, color: 'orange-500' },
+    'CSS': { icon: <Braces size={24} />, color: 'blue-500' },
+    'JavaScript': { icon: <Code size={24} />, color: 'yellow-400' },
+    
+    // Backend
+    'Java': { icon: <Code size={24} />, color: 'orange-600' },
+    'Python': { icon: <Code size={24} />, color: 'blue-500' },
+    'Node.js': { icon: <Server size={24} />, color: 'green-500' },
+    
+    // Database
+    'MySQL': { icon: <Database size={24} />, color: 'blue-600' },
+    'MongoDB': { icon: <Database size={24} />, color: 'green-500' },
+    'PostgreSQL': { icon: <Database size={24} />, color: 'blue-400' },
+    
+    // Game Dev
+    'C#': { icon: <Code size={24} />, color: 'purple-600' },
+    'Unity': { icon: <Cube size={24} />, color: 'gray-400' },
+    'Blender': { icon: <Cube size={24} />, color: 'orange-500' },
+    
+    // DevOps
+    'AWS': { icon: <Cloud size={24} />, color: 'orange-400' },
+    'Git': { icon: <GitBranch size={24} />, color: 'orange-600' },
+    'GitHub': { icon: <Github size={24} />, color: 'white' },
   };
 
   return (
@@ -69,8 +122,19 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {skills.map((skill) => (
+        {/* Tech Stack Section - Featured in grid */}
+        <div className="glass-card p-8 mb-16 border border-cyber-blue/30">
+          <h3 className="text-2xl font-bold mb-8 text-center text-cyber-blue">My Tech Stack</h3>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 justify-items-center">
+            {Object.entries(techLogos).map(([name, {icon, color}]) => (
+              <TechLogo key={name} name={name} icon={icon} color={color} />
+            ))}
+          </div>
+        </div>
+        
+        {/* Skills Categories */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {skills.slice(0, 3).map((skill) => (
             <div 
               key={skill.id}
               className="glass-card p-6 group transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyber-blue/20"
@@ -82,28 +146,39 @@ const AboutSection: React.FC = () => {
                 <h3 className="text-xl font-semibold">{skill.name}</h3>
               </div>
               
-              <div className="flex flex-wrap gap-3 justify-center">
+              <div className="flex flex-wrap gap-3 mt-4">
                 {skill.technologies.map((tech, i) => (
-                  <TechLogo 
-                    key={i} 
-                    name={tech} 
-                    icon={techLogos[tech].icon} 
-                    color={techLogos[tech].color} 
-                  />
+                  <Badge key={i} className={`bg-${techLogos[tech].color}/20 text-${techLogos[tech].color} hover:bg-${techLogos[tech].color}/30`}>
+                    {tech}
+                  </Badge>
                 ))}
               </div>
             </div>
           ))}
         </div>
         
-        {/* Tech Stack Section */}
-        <div className="glass-card p-8 mb-16 border border-cyber-blue/30">
-          <h3 className="text-2xl font-bold mb-6 text-center text-cyber-blue">My Tech Stack</h3>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 justify-items-center">
-            {Object.entries(techLogos).map(([name, {icon, color}]) => (
-              <TechLogo key={name} name={name} icon={icon} color={color} />
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          {skills.slice(3).map((skill) => (
+            <div 
+              key={skill.id}
+              className="glass-card p-6 group transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyber-blue/20"
+              onMouseEnter={() => setActiveSkill(skill.id)}
+              onMouseLeave={() => setActiveSkill('')}
+            >
+              <div className={`flex items-center mb-4 text-${skill.color}`}>
+                <div className="mr-3">{skill.icon}</div>
+                <h3 className="text-xl font-semibold">{skill.name}</h3>
+              </div>
+              
+              <div className="flex flex-wrap gap-3 mt-4">
+                {skill.technologies.map((tech, i) => (
+                  <Badge key={i} className={`bg-${techLogos[tech].color}/20 text-${techLogos[tech].color} hover:bg-${techLogos[tech].color}/30`}>
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
         
         <div className="mt-16 max-w-4xl mx-auto">
