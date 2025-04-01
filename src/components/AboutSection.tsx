@@ -9,10 +9,10 @@ import {
   Database, 
   Braces, 
   FileCode, 
-  Cube, 
   Cloud, 
   GitBranch, 
-  Github
+  Github,
+  Box
 } from 'lucide-react';
 import { Badge } from './ui/badge';
 
@@ -74,7 +74,7 @@ const AboutSection: React.FC = () => {
   // Tech logos mapping with more accurate branding colors
   const techLogos = {
     // Frontend
-    'React': { icon: <Cube size={24} />, color: 'sky-400' },
+    'React': { icon: <Box size={24} />, color: 'sky-400' },
     'HTML': { icon: <FileCode size={24} />, color: 'orange-500' },
     'CSS': { icon: <Braces size={24} />, color: 'blue-500' },
     'JavaScript': { icon: <Code size={24} />, color: 'yellow-400' },
@@ -91,8 +91,8 @@ const AboutSection: React.FC = () => {
     
     // Game Dev
     'C#': { icon: <Code size={24} />, color: 'purple-600' },
-    'Unity': { icon: <Cube size={24} />, color: 'gray-400' },
-    'Blender': { icon: <Cube size={24} />, color: 'orange-500' },
+    'Unity': { icon: <Box size={24} />, color: 'gray-400' },
+    'Blender': { icon: <Box size={24} />, color: 'orange-500' },
     
     // DevOps
     'AWS': { icon: <Cloud size={24} />, color: 'orange-400' },
