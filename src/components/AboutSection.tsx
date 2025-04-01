@@ -208,10 +208,43 @@ const AboutSection: React.FC = () => {
                       
                       <div className="flex-1 glass-card p-6 border border-cyber-pink/30 group-hover:border-cyber-pink/60 transition-all duration-300">
                         <div className="flex items-center justify-between mb-2">
+                          <h4 className="text-xl font-bold text-white group-hover:text-cyber-pink transition-colors duration-300">Java Developer</h4>
+                          <Badge className="bg-cyber-pink/20 text-cyber-pink hover:bg-cyber-pink/30 flex items-center">
+                            <Calendar className="mr-1" size={14} />
+                            2022 - Present
+                          </Badge>
+                        </div>
+                        <p className="text-gray-400 mb-3">Cognyfiz</p>
+                        <p className="text-gray-400">
+                          Developing Java-based applications and solutions with a focus on maintainability and performance.
+                          Implementing RESTful APIs and working with Spring Boot ecosystem.
+                          Collaborating with cross-functional teams to deliver high-quality software products.
+                        </p>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          <Badge className="bg-orange-600/20 text-orange-600">Java</Badge>
+                          <Badge className="bg-green-500/20 text-green-500">Spring Boot</Badge>
+                          <Badge className="bg-blue-500/20 text-blue-500">REST APIs</Badge>
+                          <Badge className="bg-purple-600/20 text-purple-600">Microservices</Badge>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="relative group">
+                    <div className="flex items-start">
+                      <div className="relative mr-4">
+                        <div className="w-14 h-14 rounded-full flex items-center justify-center bg-cyber-pink/20 border border-cyber-pink/50 shadow-lg shadow-cyber-pink/20 group-hover:shadow-cyber-pink/40 transition-all duration-300">
+                          <Briefcase className="text-cyber-pink" size={24} />
+                        </div>
+                        <div className="absolute top-14 bottom-0 left-1/2 w-1 bg-gradient-to-b from-cyber-pink to-transparent h-full transform -translate-x-1/2"></div>
+                      </div>
+                      
+                      <div className="flex-1 glass-card p-6 border border-cyber-pink/30 group-hover:border-cyber-pink/60 transition-all duration-300">
+                        <div className="flex items-center justify-between mb-2">
                           <h4 className="text-xl font-bold text-white group-hover:text-cyber-pink transition-colors duration-300">Senior Java Developer</h4>
                           <Badge className="bg-cyber-pink/20 text-cyber-pink hover:bg-cyber-pink/30 flex items-center">
                             <Calendar className="mr-1" size={14} />
-                            2020 - Present
+                            2020 - 2022
                           </Badge>
                         </div>
                         <p className="text-gray-400 mb-3">TechCorp Solutions</p>
