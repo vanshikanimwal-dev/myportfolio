@@ -27,7 +27,7 @@ This is the **personal portfolio website** of *Vanshika Nimwal*, built to showca
 To run this project locally:
 
 ```bash
-git clone https://github.com/vanshikanimwal05/portfolio-website.git
+git clone https://github.com/vanshikanimwal05/myportfolio.git
 cd portfolio-website
 npm install
 npm start
