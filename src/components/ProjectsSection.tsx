@@ -35,15 +35,6 @@ const ProjectsSection: React.FC = () => {
       demo: "https://demo.com"
     },
     {
-      id: 3,
-      title: "Portfolio Website",
-      description: "A modern portfolio website with cyberpunk-inspired design. Features interactive sections, responsive layout, and animated elements to create an engaging user experience.",
-      image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=600&q=60",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
-      github: "https://github.com",
-      demo: "https://demo.com"
-    },
-    {
       id: 4,
       title: "CyberDash Analytics",
       description: "A real-time dashboard for tracking user analytics with customizable metrics and interactive charts. Built with a focus on performance and data visualization.",
