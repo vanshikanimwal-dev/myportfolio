@@ -37,6 +37,35 @@ const ContactSection: React.FC = () => {
     setTimeout(() => setIsSubmitted(false), 3000);
   };
 
+  // Social media links with actual URLs
+  const socialLinks = [
+    { 
+      name: 'instagram', 
+      url: 'https://www.instagram.com/vanshikanimwal?igsh=NmFvcjY3dXpkN2dr', 
+      icon: <Instagram size={18} /> 
+    },
+    { 
+      name: 'twitter', 
+      url: 'https://x.com/Vanshikanimwal?t=HyM32F94jeFhebQZuYcf9g&s=08', 
+      icon: <Twitter size={18} /> 
+    },
+    { 
+      name: 'linkedin', 
+      url: 'https://www.linkedin.com/in/vanshika-nimwal-90ab24314', 
+      icon: <Linkedin size={18} /> 
+    },
+    { 
+      name: 'leetcode', 
+      url: 'https://leetcode.com/u/vanni2005/', 
+      icon: <Code size={18} /> 
+    },
+    { 
+      name: 'hackerrank', 
+      url: 'https://www.hackerrank.com/profile/vanshikanimwal21', 
+      icon: <Code size={18} /> 
+    }
+  ];
+
   return (
     <section id="contact" className="py-20 bg-cyber-dark relative">
       {/* Animated background */}
@@ -88,21 +117,19 @@ const ContactSection: React.FC = () => {
               
               <div>
                 <h4 className="text-white text-lg mb-2">Follow Me</h4>
-                <div className="flex space-x-4 mt-2">
-                  {['github', 'twitter', 'linkedin', 'instagram'].map((social) => (
+                <div className="flex flex-wrap gap-4 mt-2">
+                  {socialLinks.map((social) => (
                     <a 
-                      key={social}
-                      href={`https://${social}.com`} 
+                      key={social.name}
+                      href={social.url} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full flex items-center justify-center border border-gray-600 text-gray-400 hover:text-cyber-blue hover:border-cyber-blue transition-all duration-300 group"
+                      aria-label={social.name}
                     >
-                      <span className="sr-only">{social}</span>
+                      <span className="sr-only">{social.name}</span>
                       <div className="transform group-hover:scale-110 group-hover:animate-pulse-glow transition-all duration-300">
-                        {social === 'github' && <Github size={18} />}
-                        {social === 'twitter' && <Twitter size={18} />}
-                        {social === 'linkedin' && <Linkedin size={18} />}
-                        {social === 'instagram' && <Instagram size={18} />}
+                        {social.icon}
                       </div>
                     </a>
                   ))}
@@ -186,7 +213,7 @@ const ContactSection: React.FC = () => {
   );
 };
 
-// Need to import social icons
-import { Github, Twitter, Linkedin, Instagram } from 'lucide-react';
+// Import social media icons
+import { Github, Twitter, Linkedin, Instagram, Code } from 'lucide-react';
 
 export default ContactSection;
